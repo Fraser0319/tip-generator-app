@@ -79,6 +79,8 @@ query getOversResultsV3($dateFrom: String, $dateTo: String){
   }
   `;
 
+let counter = 0;
+
 const Match = ({dateFrom, dateTo}) => (
   <Query query={GET_OVERS_V3} variables={{ dateFrom, dateTo }}>
     {({ loading, error, data }) => {
@@ -91,8 +93,11 @@ const Match = ({dateFrom, dateTo}) => (
         );
       if (error) return <p>Error :(</p>;
 
+     
+
       let results = data.getOversResults.map(
         ({ date, match, score, result, competition }) => {
+          counter++;
           let tag = '';
           let homeRule1Info = match.homeTeam + ' have had ' + result.homeRule1 + ' goals in their last 3 home games.';
           let homeRule2Info = match.homeTeam + ' had' + result.homeRule2 + ' of the 3 previous games ending over 2.5 goals.';
@@ -107,9 +112,10 @@ const Match = ({dateFrom, dateTo}) => (
             : (tag = 'tag is-large is-danger');
           let time = moment(date).format("HH:mm");
           date = moment(date).format("DD-MM-YYYY");
+
           return (
             
-            <section className="section">
+            <section key={counter} className="section">
               <div className="container is-fluid">
                 <div className="box">
                   <h5 className="subtitle">{`${competition}`}</h5>

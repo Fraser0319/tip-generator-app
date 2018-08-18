@@ -9,8 +9,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const client = new ApolloClient({
-  // uri: 'https://tip-generator-dev.herokuapp.com/graphql'
-  uri: 'http://localhost:5000/graphql'
+  uri: process.env.TIP_GEN_API
 });
 
 class App extends React.Component {
