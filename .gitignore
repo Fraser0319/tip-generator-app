@@ -80,3 +80,6 @@ typings/
 
 # next.js build output
 .next
+
+# now config
+now.json
