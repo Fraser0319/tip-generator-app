@@ -96,12 +96,12 @@ class App extends React.Component {
                     this.changeStartDate(moment().format('YYYY-MM-DD'));
                     this.changeEndDate(
                       moment()
-                        .add(14, 'days')
+                        .add(7, 'days')
                         .format('YYYY-MM-DD')
                     );
                   }}
                 >
-                  Next 5 Days
+                  Next 7 Days
                 </a>
               </div>
             </div>
