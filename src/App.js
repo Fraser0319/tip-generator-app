@@ -12,8 +12,6 @@ const client = new ApolloClient({
   uri: process.env.REACT_APP_TIP_GEN_API
 });
 
-console.log(process.env.REACT_APP_TIP_GEN_API);
-
 class App extends React.Component {
   constructor(props) {
     super(props);
