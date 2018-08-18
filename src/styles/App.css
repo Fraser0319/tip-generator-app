@@ -3,7 +3,8 @@ body,
 .App,
 .App > div {
   height: 100%;
-  background-color: hsl(0, 0%, 96%);
+  /* background-color: hsl(0, 0%, 96%); */
+  background-color: white; 
 }
 
 .App {
