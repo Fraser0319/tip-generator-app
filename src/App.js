@@ -9,7 +9,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const client = new ApolloClient({
-  uri: process.env.TIP_GEN_API
+  uri: process.env.REACT_APP_TIP_GEN_API
 });
 
 class App extends React.Component {
