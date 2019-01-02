@@ -12,4 +12,4 @@ ADD package.json yarn.lock /usr/src/app/
 RUN yarn install
 
 # start app
-CMD ["yarn", "start"]
+# CMD ["yarn", "start"]
