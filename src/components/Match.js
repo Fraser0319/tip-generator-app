@@ -34,8 +34,8 @@ const GET_OVERS = gql`
 
 
 const GET_OVERS_V3 = gql`
-query getOversResultsV3($dateFrom: String, $dateTo: String){
-  getOversResults(dateFrom: $dateFrom , dateTo: $dateTo) {
+query getOversResultsV3($dateFrom: String, $dateTo: String, $passOnly: Boolean){
+  getOversResultsV3(dateFrom: $dateFrom , dateTo: $dateTo, passOnly: $passOnly) {
     date
     match {
       homeTeam
@@ -81,8 +81,8 @@ query getOversResultsV3($dateFrom: String, $dateTo: String){
 
 let counter = 0;
 
-const Match = ({dateFrom, dateTo}) => (
-  <Query query={GET_OVERS_V3} variables={{ dateFrom, dateTo }}>
+const Match = ({dateFrom, dateTo, passOnly}) => (
+  <Query query={GET_OVERS_V3} variables={{ dateFrom, dateTo, passOnly }}>
     {({ loading, error, data }) => {
       if (loading)
         return (
@@ -92,10 +92,8 @@ const Match = ({dateFrom, dateTo}) => (
           </p>
         );
       if (error) return <p>Error :(</p>;
-
-     
-
-      let results = data.getOversResults.map(
+        
+      let results = data.getOversResultsV3.map(
         ({ date, match, score, result, competition }) => {
           counter++;
           let tag = '';
