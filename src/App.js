@@ -5,6 +5,7 @@ import Match from './components/Match';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import moment from 'moment';
+import ReactGA from 'react-ga';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_TIP_GEN_API
@@ -21,6 +22,10 @@ class App extends React.Component {
     this.changeStartDate = this.changeStartDate.bind(this);
     this.changeEndDate = this.changeEndDate.bind(this);
     this.changeSwtich = this.changeSwtich.bind(this);
+
+    ReactGA.initialize(process.env.GOOGLE_ANALYTICS_TRACKING_CODE);
+    ReactGA.pageview('/');
+
   }
 
   changeEndDate(date) {
@@ -71,6 +76,10 @@ class App extends React.Component {
                         .subtract(3, 'days')
                         .format('YYYY-MM-DD')
                     );
+                    ReactGA.event({
+                      category: 'User',
+                      action: 'Previous 3 days'
+                    });
                   }}
                 >
                   Previous 3 Days
@@ -82,6 +91,10 @@ class App extends React.Component {
                   onClick={async () => {
                     this.changeEndDate(moment().format('YYYY-MM-DD'));
                     this.changeStartDate(moment().format('YYYY-MM-DD'));
+                    ReactGA.event({
+                      category: 'User',
+                      action: 'Today'
+                    });
                   }}
                 >
                   Today
@@ -97,6 +110,10 @@ class App extends React.Component {
                         .add(3, 'days')
                         .format('YYYY-MM-DD')
                     );
+                    ReactGA.event({
+                      category: 'User',
+                      action: 'Next 3 days'
+                    });
                   }}
                 >
                   Next 3 Days
@@ -112,6 +129,10 @@ class App extends React.Component {
                         .add(7, 'days')
                         .format('YYYY-MM-DD')
                     );
+                    ReactGA.event({
+                      category: 'User',
+                      action: 'Next 7 days'
+                    });
                   }}
                 >
                 Next 7 Days
