@@ -31,7 +31,7 @@ class App extends React.Component {
     this.getNext7DaysMatches = this.getNext7DaysMatches.bind(this);
     this.getTodaysMatches = this.getTodaysMatches.bind(this);
 
-    ReactGA.initialize('UA-131667366-1');
+    ReactGA.initialize(process.env.GOOGLE_ANALYTICS_TRACKING_CODE);
     ReactGA.pageview('/');
   }
 
