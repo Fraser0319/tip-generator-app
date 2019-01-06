@@ -2,13 +2,13 @@ import React from 'react';
 import './styles/App.css';
 import Match from './components/Match';
 import DateRangeButton from './components/DateRangeButton';
-// import RuleInfo from './components/RuleInfo';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import moment from 'moment';
 import ReactGA from 'react-ga';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import FilterMatchesToggle from './components/FilterMatchesToggle';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_TIP_GEN_API
@@ -25,7 +25,7 @@ class App extends React.Component {
 
     this.changeStartDate = this.changeStartDate.bind(this);
     this.changeEndDate = this.changeEndDate.bind(this);
-    this.changeSwtich = this.changeSwtich.bind(this);
+    this.changeSwitch = this.changeSwitch.bind(this);
     this.getPrevious3daysMatches = this.getPrevious3daysMatches.bind(this);
     this.getNext3DaysMatches = this.getNext3DaysMatches.bind(this);
     this.getNext7DaysMatches = this.getNext7DaysMatches.bind(this);
@@ -41,7 +41,7 @@ class App extends React.Component {
     });
   }
 
-  changeSwtich() {
+  changeSwitch() {
     this.setState({
       passOnly: !this.state.passOnly
     });
@@ -90,20 +90,10 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <section className="section">
-            <div className="field">
-              <input
-                id="filterMatchesToggle"
-                type="checkbox"
-                name="filterMatchesToggle"
-                className="switch is-success"
-                onClick={async () => {
-                  this.changeSwtich();
-                }}
-              />
-              <label htmlFor="filterMatchesToggle">
-                Show Matches To Bet On
-              </label>
-            </div>
+            <FilterMatchesToggle
+              changeSwitch={this.changeSwitch}
+              toggleOnOff={this.state.passOnly}
+            />
             <div className="columns">
               <div className="column">
                 <DateRangeButton
@@ -140,7 +130,6 @@ class App extends React.Component {
           )}
         </div>
         <Footer />
-        
       </ApolloProvider>
     );
   }
