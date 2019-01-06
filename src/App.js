@@ -7,6 +7,7 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import moment from 'moment';
 import ReactGA from 'react-ga';
+import Footer from './components/Header';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_TIP_GEN_API
@@ -20,7 +21,7 @@ class App extends React.Component {
       endDate: null,
       passOnly: false
     };
-    
+
     this.changeStartDate = this.changeStartDate.bind(this);
     this.changeEndDate = this.changeEndDate.bind(this);
     this.changeSwtich = this.changeSwtich.bind(this);
@@ -116,19 +117,19 @@ class App extends React.Component {
                 />
               </div>
               <div className="column">
-              <DateRangeButton
+                <DateRangeButton
                   text={'Today'}
                   buttonAction={this.getTodaysMatches}
                 />
               </div>
               <div className="column">
-              <DateRangeButton
+                <DateRangeButton
                   text={'Next 3 days'}
                   buttonAction={this.getNext3DaysMatches}
                 />
               </div>
               <div className="column">
-              <DateRangeButton
+                <DateRangeButton
                   text={'Next 7 days'}
                   buttonAction={this.getNext7DaysMatches}
                 />
@@ -143,6 +144,8 @@ class App extends React.Component {
             />
           )}
         </div>
+        <Footer />
+        
       </ApolloProvider>
     );
   }

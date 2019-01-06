@@ -1,1 +1,5 @@
-node_modules
+*
+!src
+!yarn.lock
+!public
+!package.json
