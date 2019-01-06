@@ -7,7 +7,8 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import moment from 'moment';
 import ReactGA from 'react-ga';
-import Footer from './components/Header';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_TIP_GEN_API
@@ -87,13 +88,7 @@ class App extends React.Component {
     return (
       <ApolloProvider client={client}>
         <div className="App">
-          <header className="App-header ">
-            <h1 className="title">
-              Tip-Generator
-              <i className="fas fa-futbol" />
-            </h1>
-            <h2 className="subtitle">Over 2.5 goal tips</h2>
-          </header>
+          <Header />
           <section className="section">
             <div className="field">
               <input
