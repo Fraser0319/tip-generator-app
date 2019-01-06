@@ -53,16 +53,28 @@ const Match = ({ dateFrom, dateTo, passOnly }) => (
         );
 
       if (data.getOversResultsV3.length === 0) {
-        return <p>There are no matches availble during this period.</p>;
+        return <h2>There are no matches availble during this period.</h2>;
       }
 
       let results = data.getOversResultsV3.map(
         ({ date, match, score, result, competition }) => {
           counter++;
           let tag = '';
-          let homeRule1Info = match.homeTeam + ' have had ' + result.homeRule1 + ' goals in their last 3 home games.';
-          let homeRule2Info = match.homeTeam + ' had' + result.homeRule2 + ' of the 3 previous games ending over 2.5 goals.';
-          let awayRule1Info = match.awayTeam + ' have had ' + result.awayRule1 + ' goals in their last 3 away games.';
+          let homeRule1Info =
+            match.homeTeam +
+            ' have had ' +
+            result.homeRule1 +
+            ' goals in their last 3 home games.';
+          let homeRule2Info =
+            match.homeTeam +
+            ' had' +
+            result.homeRule2 +
+            ' of the 3 previous games ending over 2.5 goals.';
+          let awayRule1Info =
+            match.awayTeam +
+            ' have had ' +
+            result.awayRule1 +
+            ' goals in their last 3 away games.';
 
           let total = score.homeTeam + score.awayTeam;
           total > 2
